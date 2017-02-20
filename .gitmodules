@@ -1,0 +1,6 @@
+[submodule "cmake/Helpers/hunter"]
+	path = cmake/Helpers/hunter
+	url = https://github.com/ruslo/hunter
+[submodule "cmake/Helpers/polly"]
+	path = cmake/Helpers/polly
+	url = https://github.com/ruslo/polly
