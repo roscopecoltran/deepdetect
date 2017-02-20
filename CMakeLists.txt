@@ -1,8 +1,42 @@
-cmake_minimum_required(VERSION 2.8.8)
-project(deepdetect)
+# Copyright (c) 2017, Luc Michalski
+# All rights reserved.
 
+if(MSVC)
+    # 3.4 is needed for CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS
+    cmake_minimum_required(VERSION 3.4) 
+else()
+    cmake_minimum_required(VERSION 3.2)
+endif()
 
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+# IMPORTANT: just need to create 2 new variables: ${PROJECT_NAME}, ${PROJECT_VERSION}, as they cannot be declared before HunterGate is included
+set(current_project_name "deepdetect") # PROJECT_NAME: ${current_project_name}
+set(current_project_version v0.1.0) # PROJECT_VERSION: ${current_project_version}
+set(current_project_root_path ${CMAKE_CURRENT_LIST_DIR})
+
+string(COMPARE NOTEQUAL "$ENV{TRAVIS_TAG}" "" travis_deploy)
+string(COMPARE EQUAL "$ENV{APPVEYOR_REPO_TAG}" "true" appveyor_deploy)
+
+if(travis_deploy)
+  set(version "$ENV{TRAVIS_TAG}")
+elseif(appveyor_deploy)
+  set(version "$ENV{APPVEYOR_REPO_TAG_NAME}")
+else()
+  set(version "v0.1.0")
+endif()
+
+string(REGEX REPLACE "^v" "" version "${version}")
+
+### Hunter snapshot that will be used ###
+include("cmake/Hunter/HunterGate.cmake")
+HunterGate(
+    URL "https://github.com/ruslo/hunter/archive/v0.18.1.tar.gz"
+    SHA1 "c1aa0ef5191e4484889866c62263a64f1ee61d3e"
+    LOCAL
+)
+
+project(${current_project_name} VERSION ${version})
+
+#list(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 include(ProcessorCount)
@@ -13,7 +47,7 @@ set (deepdetect_VERSION_MAJOR 0)
 set (deepdetect_VERSION_MINOR 1)
 
 # options
-OPTION(BUILD_TESTS "Should the tests be built")
+OPTION(BUILD_TESTS "Should the tests be built" OFF)
  
 # Get the current working branch
 execute_process(

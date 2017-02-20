@@ -10,3 +10,30 @@
 [submodule "3rdparty/nanomsg"]
 	path = 3rdparty/nanomsg
 	url = https://github.com/roscopecoltran/nanomsg
+[submodule "3rdparty/CppServer"]
+	path = 3rdparty/CppServer
+	url = https://github.com/roscopecoltran/CppServer
+	branch = hunter
+[submodule "3rdparty/tensorflow"]
+	path = 3rdparty/tensorflow
+	url = https://github.com/roscopecoltran/tensorflow
+	branch = hunter
+[submodule "cmake/dockcross"]
+	path = cmake/dockcross
+	url = https://github.com/dockcross/dockcross
+[submodule "docker/helpers/crane"]
+	path = docker/helpers/crane
+	url = https://github.com/roscopecoltran/crane
+[submodule "docker/helpers/nut"]
+	path = docker/helpers/nut
+	url = https://github.com/roscopecoltran/nut
+	branch = expand_env_and_arguments
+[submodule "experimental/cross-platform/emgucv"]
+	path = experimental/cross-platform/emgucv
+	url = https://github.com/emgucv/emgucv
+[submodule "experimental/mobile/caffe-mobile"]
+	path = experimental/mobile/caffe-mobile
+	url = https://github.com/solrex/caffe-mobile
+[submodule "experimental/mobile/gatherer"]
+	path = experimental/mobile/gatherer
+	url = https://github.com/roscopecoltran/gatherer
