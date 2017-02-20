@@ -37,3 +37,6 @@
 [submodule "experimental/mobile/gatherer"]
 	path = experimental/mobile/gatherer
 	url = https://github.com/roscopecoltran/gatherer
+[submodule "stacks/image-matching/match"]
+	path = stacks/image-matching/match
+	url = https://github.com/pavlovai/match
